@@ -131,16 +131,25 @@ function greatestProduct(matrix) {
 
   for (let i = 0; i < size; i++) {
     for (let j = 0; j < size; j++) {
+      // Check horizonalty
       if(j+3 < size) {
         const horizontalProduct = matrix[i][j] * matrix[i][j+1] * matrix[i][j+2] * matrix[i][j+3];
         if (horizontalProduct > maxProduct) {
           maxProduct = horizontalProduct;
         }
       }
+      // Check verticaly
       if(i+3 < size) {
         const verticalProduct = matrix[i][j] * matrix[i+1][j] * matrix[i+2][j] * matrix[i+3][j];
         if (verticalProduct > maxProduct) {
           maxProduct = verticalProduct;
+        }
+      }
+      // Check diagonal right
+      if(i+3 < size && j+3 < size) {
+        const daigonalRightProdust = matrix[i][j] * matrix[i+1][j+1] * matrix[i+2][j+2] * matrix[i+3][j+3];
+        if (daigonalRightProdust > maxProduct) {
+          maxProduct = daigonalRightProdust;
         }
       }
     }
